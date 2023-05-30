@@ -1,0 +1,31 @@
+852. Peak Index in a Mountain Array
+  
+
+Solution : 
+
+class Solution {
+public:
+    int peakIndexInMountainArray(vector<int>& arr) {
+
+        // Using Binary Seacrh 
+        int start = 0 ;
+        int end = arr.size() - 1;
+
+        int mid = start + ( end- start) / 2;
+
+        while(start < end) 
+        {
+            if( arr[mid] < arr[mid+1]) 
+            {
+                start = mid + 1;
+            }
+            else{
+                // when arr[mid] > arr[mid+1] || arr[mid] == peak
+                end = mid;
+            }
+            mid = start + (end - start) /2;
+        }
+        return start; // When start = end loop will terminate and return peak element index
+        
+    }
+};
